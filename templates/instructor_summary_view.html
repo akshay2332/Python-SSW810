@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h2>{{ title }}</h2>
+
+{% block content %}
+{% if instructors == [] %}
+<h3>No instructor found!!!</h3>
+{% else %}
+<h3>{{table_title}}</h3>
+{% endif %}
+{% endblock content %}
+
+
+<table border="1">
+    <thead>
+    {% for header in table_header %}
+    <th>
+        {{header}}
+    </th>
+    {% endfor %}
+    </thead>
+    <tbody>
+    {% for instructor in instructors %}
+    <tr>
+        <td>{{ instructor.cwid }}</td>
+        <td>{{ instructor.name }}</td>
+        <td>{{ instructor.dept }}</td>
+        <td>{{ instructor.course }}</td>
+        <td>{{ instructor.count }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
